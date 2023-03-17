@@ -1,4 +1,4 @@
-# Ecology_work1
+# Ecology_homework
 
 ### Homeworks for Prof. Fanglin Liu.
 
