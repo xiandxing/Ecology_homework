@@ -7,7 +7,7 @@
 # 2. Representing the work as R script, i.e. homework_01.R. Note: adding comments
 # 3. completing the work step by step as follows, don’t skip any one
 
-
+rm(list = ls()) # Delete environment variables
 
 # 1. 
 
@@ -36,7 +36,3 @@ env_final<- env_tb %>% # Use %>% pipe, and name the final variable as env_final
             select(site, dfs, slo, flo, pH, nit, oxy) %>% # Select these columns for further analysis
             rename(distsour = dfs, slope = slo, flowrate = flo, nitrogen = nit, oxygen = oxy) %>% # Rename 5 columns
             arrange(slope, desc(pH)) # Arrange the data first by slope in ascending order, and then by pH in descending order
-
-
-
-
