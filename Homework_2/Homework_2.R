@@ -8,7 +8,9 @@
 # Submission
 # 1. Export your R script as a Homework_2.R file 
 # 2. Submit your homework through your own github
-# 3. Due Date: April 5, 2023
+# 3. Due Date: April 11, 2023
+
+rm(list = ls()) # Delete environment variables
 
 library('tidyverse') # Load tool package
 library('caret') # Load tool package, being used in section II
