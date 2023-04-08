@@ -181,7 +181,3 @@ pred_test <- predict(lr_model, xtest)
 
 RMSE(pred_train, xtrain$total_fish)
 RMSE(pred_test, xtest$total_fish)
-
-
-
-
