@@ -33,6 +33,6 @@ env_tb <- as_tibble(env) # then convert the data frame to a tibble, named it env
 
 env_final<- env_tb %>% # Use %>% pipe, and name the final variable as env_final
             subset(dfs > 1000) %>% # Extract and remain the data of the dfs with more than 1000 km
-            select(site, dfs, slo, flo, pH, nit, oxy) %>% # Select these columns for further analysis
+            dplyr::select(site, dfs, slo, flo, pH, nit, oxy) %>% # Select these columns for further analysis, select() may be confused by it from MASS
             rename(distsour = dfs, slope = slo, flowrate = flo, nitrogen = nit, oxygen = oxy) %>% # Rename 5 columns
             arrange(slope, desc(pH)) # Arrange the data first by slope in ascending order, and then by pH in descending order
