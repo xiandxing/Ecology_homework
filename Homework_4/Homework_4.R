@@ -45,18 +45,18 @@ rm(list = ls())
 # 3. Plot the cropped NDVI. 
 # Steps: Using R package (raster) load and crop
 library('raster')
-ndvi_raster <- raster("LC08_L1TP_196027_20230405_20230412_02_T1_refl.tiff") # Load raster file
+ndvi_raster <- raster("merged_NDVI.tif") # Load raster file
 
 library('sf')
-aoi_vector <- st_read("doubs_river_shapeFile.shp") # load river line which was saved as shapefile in QGIS
+aoi_vector <- st_read("AOI.shp") # load river line which was saved as shapefile in QGIS
 
 # Judge if crs are identical between raster and river
 # If not, transform the crs of AOI vector into the another which is the same as that of NDVI
-crs(ndvi_raster) == st_crs(aoi_vector) # FALSE
-aoi_transformed <- st_transform(aoi_vector, crs(ndvi_raster))
+st_crs(ndvi_raster) == st_crs(aoi_vector) # TRUE
+# aoi_transformed <- st_transform(aoi_vector, st_crs(ndvi_raster))
 
 # Crop and mask the NDVI for a small area, which just covers the AOI
-ndvi_cropped <- crop(ndvi_raster, aoi_transformed)
-ndvi_masked <- mask(ndvi_cropped, aoi_transformed)
+ndvi_cropped <- crop(ndvi_raster, aoi_vector)
+ndvi_masked <- mask(ndvi_cropped, aoi_vector)
 
 writeRaster(ndvi_masked, filename = 'doubs_masked.tif', overwrite = TRUE) # save as tiff and load in QGIS
